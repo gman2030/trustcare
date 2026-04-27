@@ -55,11 +55,13 @@ class Supplychain_controller extends Controller
         $product->price = 0;    // قيمة افتراضية
         $product->quantity = 0; // قيمة افتراضية
 
-        // 3. معالجة ورفع الصورة إذا وجدت
+                // 3. معالجة ورفع الصورة إذا وجدت
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads/products'), $imageName);
-            $product->image = $imageName;
+            // This saves to storage/app/public/products and returns the path
+            $path = $request->file('image')->store('products', 'public');
+
+            // Store only the filename or the path in the DB
+            $product->image = $path;
         }
 
         // 4. الحفظ في قاعدة البيانات
