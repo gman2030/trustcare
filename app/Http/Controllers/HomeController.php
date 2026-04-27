@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
@@ -69,12 +70,22 @@ class HomeController extends Controller
 
         $storedPath = trim($message->warranty_image);
         $normalizedPath = ltrim(str_replace('\\', '/', $storedPath), '/');
-        $normalizedPath = preg_replace('#^storage/#', '', $normalizedPath);
+
+        // If DB contains a full URL, extract only the path part first.
+        if (Str::startsWith($normalizedPath, ['http://', 'https://'])) {
+            $urlPath = parse_url($normalizedPath, PHP_URL_PATH);
+            $normalizedPath = ltrim((string) $urlPath, '/');
+        }
+
+        $normalizedPath = preg_replace('#^(public/)?storage/#', '', $normalizedPath);
+        $fileName = basename($normalizedPath);
 
         $possiblePaths = [
             storage_path('app/public/' . $normalizedPath),
             storage_path('app/public/' . ltrim($storedPath, '/\\')),
+            storage_path('app/public/warranties/' . $fileName),
             public_path('storage/' . $normalizedPath),
+            public_path('storage/warranties/' . $fileName),
             public_path($normalizedPath),
         ];
 
