@@ -10,6 +10,18 @@
         </div>
     @endif
 
+    @if (session('error'))
+        <div style="background:#fee2e2; color:#b91c1c; padding:14px 20px; border-radius:10px; margin-bottom:20px; border:1px solid #f87171; display:flex; align-items:center; gap:10px;">
+            <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+        </div>
+    @endif
+
+    @if (session('info'))
+        <div style="background:#e0f2fe; color:#075985; padding:14px 20px; border-radius:10px; margin-bottom:20px; border:1px solid #7dd3fc; display:flex; align-items:center; gap:10px;">
+            <i class="fas fa-info-circle"></i> {{ session('info') }}
+        </div>
+    @endif
+
     {{-- New Maintenance Request --}}
     <div class="form-card" style="max-width:100%; margin-bottom:30px;">
         <div class="form-header">

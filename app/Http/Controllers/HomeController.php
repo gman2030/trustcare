@@ -6,8 +6,6 @@ use App\Models\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
@@ -59,23 +57,18 @@ class HomeController extends Controller
     }
 
     public function viewWarrantyCard($id)
-{
-    $message = Message::where('id', $id)
-        ->where('user_id', auth()->id())
-        ->firstOrFail();
+    {
+        $message = Message::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
 
-    if (!$message->warranty_image) {
-        return back()->with('error', 'No image attached to this request.');
+        $fullPath = Message::warrantyFilesystemPath($message->warranty_image);
+        if ($fullPath) {
+            return response()->file($fullPath);
+        }
+
+        return redirect()->route('home')->with('error', 'Warranty card image could not be found on the server.');
     }
-
-    // استخدام Storage للتحقق من وجود الملف في مجلد public
-    if (\Illuminate\Support\Facades\Storage::disk('public')->exists($message->warranty_image)) {
-        $path = storage_path('app/public/' . $message->warranty_image);
-        return response()->file($path);
-    }
-
-    return back()->with('error', 'The image file does not exist on the server.');
-}
     // ... داخل كلاس HomeController
     public function showSolutions()
     {

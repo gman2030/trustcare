@@ -96,7 +96,12 @@ function openCustomerDetails(name, phone, serial, complaint, imageUrl) {
     const imgTag = document.getElementById('m_image');
     const noImgText = document.getElementById('m_no_image');
 
-    if (imageUrl && imageUrl.trim() !== "" && !imageUrl.endsWith('/storage/')) {
+    if (imageUrl && imageUrl.trim() !== "") {
+        imgTag.onerror = function() {
+            imgTag.style.display = 'none';
+            noImgText.style.display = 'block';
+            imgTag.onerror = null;
+        };
         imgTag.src = imageUrl;
         imgTag.style.display = 'inline-block';
         noImgText.style.display = 'none';
