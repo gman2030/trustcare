@@ -59,44 +59,23 @@ class HomeController extends Controller
     }
 
     public function viewWarrantyCard($id)
-    {
-        $message = Message::where('id', $id)
-            ->where('user_id', auth()->id())
-            ->firstOrFail();
+{
+    $message = Message::where('id', $id)
+        ->where('user_id', auth()->id())
+        ->firstOrFail();
 
-        if (!$message->warranty_image) {
-            return redirect()->route('home')->with('error', 'Warranty card image not found.');
-        }
-
-        $storedPath = trim($message->warranty_image);
-        $normalizedPath = ltrim(str_replace('\\', '/', $storedPath), '/');
-
-        // If DB contains a full URL, extract only the path part first.
-        if (Str::startsWith($normalizedPath, ['http://', 'https://'])) {
-            $urlPath = parse_url($normalizedPath, PHP_URL_PATH);
-            $normalizedPath = ltrim((string) $urlPath, '/');
-        }
-
-        $normalizedPath = preg_replace('#^(public/)?storage/#', '', $normalizedPath);
-        $fileName = basename($normalizedPath);
-
-        $possiblePaths = [
-            storage_path('app/public/' . $normalizedPath),
-            storage_path('app/public/' . ltrim($storedPath, '/\\')),
-            storage_path('app/public/warranties/' . $fileName),
-            public_path('storage/' . $normalizedPath),
-            public_path('storage/warranties/' . $fileName),
-            public_path($normalizedPath),
-        ];
-
-        foreach ($possiblePaths as $fullPath) {
-            if (File::exists($fullPath)) {
-                return response()->file($fullPath);
-            }
-        }
-
-        return redirect()->route('home')->with('error', 'Warranty card image not found.');
+    if (!$message->warranty_image) {
+        return back()->with('error', 'No image attached to this request.');
     }
+
+    // استخدام Storage للتحقق من وجود الملف في مجلد public
+    if (\Illuminate\Support\Facades\Storage::disk('public')->exists($message->warranty_image)) {
+        $path = storage_path('app/public/' . $message->warranty_image);
+        return response()->file($path);
+    }
+
+    return back()->with('error', 'The image file does not exist on the server.');
+}
     // ... داخل كلاس HomeController
     public function showSolutions()
     {
