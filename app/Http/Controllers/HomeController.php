@@ -6,6 +6,7 @@ use App\Models\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
@@ -54,6 +55,21 @@ class HomeController extends Controller
         ]);
 
         return back()->with('success', 'Your request has been successfully submitted !');
+    }
+
+    public function viewWarrantyCard($id)
+    {
+        $message = Message::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
+
+        if (!$message->warranty_image || !Storage::disk('public')->exists($message->warranty_image)) {
+            return redirect()->route('home')->with('error', 'Warranty card image not found.');
+        }
+
+        $fullPath = storage_path('app/public/' . $message->warranty_image);
+
+        return response()->file($fullPath);
     }
     // ... داخل كلاس HomeController
     public function showSolutions()

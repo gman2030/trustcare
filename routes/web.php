@@ -95,6 +95,7 @@ Route::get('/proposed-solutions', [App\Http\Controllers\HomeController::class, '
 Route::post('/supply-chain/reject/{id}', [Supplychain_controller::class, 'rejectBySupply'])->name('supply.reject');
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-invoice', [HomeController::class, 'showInvoice'])->name('thebill');
+    Route::get('/user/warranty-card/{id}', [HomeController::class, 'viewWarrantyCard'])->name('user.warranty.view');
 });
 Route::get('/invoice/download/{id}', [HomeController::class, 'downloadPDF'])->name('invoice.download');
 Route::get('/worker/exit-voucher/download/{id}', [WorkerController::class, 'downloadExitVoucher'])->name('worker.exit.download');
