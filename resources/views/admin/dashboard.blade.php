@@ -24,7 +24,7 @@
                     <td style="padding: 18px 20px;">
                         {{-- نمرر حقل warranty_image هنا --}}
                         <a href="javascript:void(0)"
-                           onclick="openCustomerDetails('{{ addslashes($msg->user->name) }}', '{{ $msg->user->phone }}', '{{ $msg->extracted_sn }}', '{{ addslashes($msg->content) }}', '{{ $msg->warranty_image ? asset('storage/' . $msg->warranty_image) : '' }}')"
+                           onclick="openCustomerDetails('{{ addslashes($msg->user->name) }}', '{{ $msg->user->phone }}', '{{ $msg->extracted_sn }}', '{{ addslashes($msg->content) }}', '{{ $msg->warranty_image ? route('admin.warranty.view', $msg->id) : '' }}')"
                            style="color: #1b2d95; font-weight: 700; text-decoration: none; border-bottom: 1px dashed #e91e63;">
                             {{ $msg->user->name }}
                         </a>

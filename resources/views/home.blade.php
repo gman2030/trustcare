@@ -179,11 +179,6 @@
                             </span>
                         </td>
                         <td>
-                            @if ($msg->warranty_image)
-                                <a href="{{ route('user.warranty.view', $msg->id) }}" target="_blank" class="btn-edit-action">
-                                    <i class="fas fa-eye"></i> View Card
-                                </a>
-                            @endif
                         </td>
                         <td>{{ $msg->worker_name ?? 'Pending...' }}</td>
                     </tr>

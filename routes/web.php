@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/home', [AdminController::class, 'dashboard'])->name('admin.home');
+    Route::get('/warranty-card/{id}', [AdminController::class, 'viewWarrantyCard'])->name('admin.warranty.view');
     Route::get('/spare-parts', [AdminController::class, 'sparePage'])->name('admin.spare');
     Route::get('/workers-control', [AdminController::class, 'showWorkers'])->name('admin.workers');
     Route::post('/assign-task/store', [AdminController::class, 'storeTask'])->name('admin.tasks.store');

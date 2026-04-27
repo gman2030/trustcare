@@ -8,7 +8,9 @@ use App\Models\SparePartOrder;
 use App\Models\Order; // تأكد من وجود الموديل أو استبداله بـ Message إذا كنت تستخدم جدولا واحدا
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -83,7 +85,7 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if ($user->id === auth()->id()) {
+        if ($user->id === Auth::id()) {
             return back()->with('error', 'You cannot delete your own account!');
         }
 
@@ -137,5 +139,42 @@ class AdminController extends Controller
         $order->is_warranty = $request->has('is_warranty') ? 1 : 0;
         $order->save();
         return back()->with('success', 'Order sent to supply chain.');
+    }
+
+    public function viewWarrantyCard($id)
+    {
+        $message = Message::findOrFail($id);
+
+        if (!$message->warranty_image) {
+            abort(404, 'Warranty card image not found.');
+        }
+
+        $storedPath = trim($message->warranty_image);
+        $normalizedPath = ltrim(str_replace('\\', '/', $storedPath), '/');
+
+        if (Str::startsWith($normalizedPath, ['http://', 'https://'])) {
+            $urlPath = parse_url($normalizedPath, PHP_URL_PATH);
+            $normalizedPath = ltrim((string) $urlPath, '/');
+        }
+
+        $normalizedPath = preg_replace('#^(public/)?storage/#', '', $normalizedPath);
+        $fileName = basename($normalizedPath);
+
+        $possiblePaths = [
+            storage_path('app/public/' . $normalizedPath),
+            storage_path('app/public/' . ltrim($storedPath, '/\\')),
+            storage_path('app/public/warranties/' . $fileName),
+            public_path('storage/' . $normalizedPath),
+            public_path('storage/warranties/' . $fileName),
+            public_path($normalizedPath),
+        ];
+
+        foreach ($possiblePaths as $fullPath) {
+            if (File::exists($fullPath)) {
+                return response()->file($fullPath);
+            }
+        }
+
+        abort(404, 'Warranty card image not found.');
     }
 }
