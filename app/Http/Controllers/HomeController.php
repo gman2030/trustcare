@@ -6,7 +6,7 @@ use App\Models\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
@@ -63,13 +63,28 @@ class HomeController extends Controller
             ->where('user_id', auth()->id())
             ->firstOrFail();
 
-        if (!$message->warranty_image || !Storage::disk('public')->exists($message->warranty_image)) {
+        if (!$message->warranty_image) {
             return redirect()->route('home')->with('error', 'Warranty card image not found.');
         }
 
-        $fullPath = storage_path('app/public/' . $message->warranty_image);
+        $storedPath = trim($message->warranty_image);
+        $normalizedPath = ltrim(str_replace('\\', '/', $storedPath), '/');
+        $normalizedPath = preg_replace('#^storage/#', '', $normalizedPath);
 
-        return response()->file($fullPath);
+        $possiblePaths = [
+            storage_path('app/public/' . $normalizedPath),
+            storage_path('app/public/' . ltrim($storedPath, '/\\')),
+            public_path('storage/' . $normalizedPath),
+            public_path($normalizedPath),
+        ];
+
+        foreach ($possiblePaths as $fullPath) {
+            if (File::exists($fullPath)) {
+                return response()->file($fullPath);
+            }
+        }
+
+        return redirect()->route('home')->with('error', 'Warranty card image not found.');
     }
     // ... داخل كلاس HomeController
     public function showSolutions()
