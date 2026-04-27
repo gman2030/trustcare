@@ -16,8 +16,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@mail.com',
             'password' => Hash::make('password123'),
             'role' => 'admin',
-            'phone' => '1234567890', // Add this line
-
+            'phone' => '0550123456',
         ]);
 
         // 2. إنشاء العامل (Worker)
@@ -26,6 +25,7 @@ class UserSeeder extends Seeder
             'email' => 'worker@mail.com',
             'password' => Hash::make('password123'),
             'role' => 'worker',
+            'phone' => '0550123457', // Added missing phone
         ]);
 
         // 3. إنشاء السبلاي تشين (Supply Chain)
@@ -34,6 +34,7 @@ class UserSeeder extends Seeder
             'email' => 'supply@mail.com',
             'password' => Hash::make('password123'),
             'role' => 'supply_chain',
+            'phone' => '0550123458', // Added missing phone
         ]);
     }
-}
+} 
