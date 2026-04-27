@@ -180,7 +180,7 @@
                         </td>
                         <td>
                             @if ($msg->warranty_image)
-                                <a href="{{ route('warranty.view', $message->id) }}" target="_blank">
+                                <a href="{{ route('user.warranty.view', $msg->id) }}" target="_blank" class="btn-edit-action">
                                     <i class="fas fa-eye"></i> View Card
                                 </a>
                             @endif
