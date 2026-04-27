@@ -35,7 +35,7 @@ class Supplychain_controller extends Controller
     // لفتح صفحة الإضافة
     public function create()
     {
-        return view('Supplychain.add_product');
+        return view('supplychain.add_product');
     }
 
     // لحفظ المنتج والعودة للمخزن
