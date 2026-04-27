@@ -16,6 +16,8 @@ class UserSeeder extends Seeder
             'email' => 'admin@mail.com',
             'password' => Hash::make('password123'),
             'role' => 'admin',
+            'phone' => '1234567890', // Add this line
+
         ]);
 
         // 2. إنشاء العامل (Worker)
