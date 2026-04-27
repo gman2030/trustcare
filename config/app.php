@@ -56,6 +56,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Force HTTPS URLs
+    |--------------------------------------------------------------------------
+    |
+    | When true (or when APP_URL uses https://), generated URLs from asset(),
+    | route(), url(), etc. use HTTPS. Helps avoid broken images/CSS on HTTPS
+    | sites behind proxies or misconfigured schemes.
+    |
+    */
+
+    'force_https' => env('FORCE_HTTPS', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
