@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Supply Manager',
                 'password' => Hash::make('password123'),
-                'role' => 'supply_chain',
+                'role' => 'supply',
                 'phone' => '0550123458',
             ]
         );
