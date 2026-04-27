@@ -66,7 +66,7 @@ class Supplychain_controller extends Controller
         $product->save();
 
         // 5. إعادة التوجيه لجدول المخزون مع رسالة نجاح
-        return redirect()->route('supply.dashboard')->with('success', 'Product registered successfully!');
+        return redirect()->route('supply.edit')->with('success', 'Product registered successfully!');
     }
 
     public function updateStock($id, $action)
