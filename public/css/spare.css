@@ -1,0 +1,129 @@
+.search-container {
+    max-width: 700px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 40px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-btn {
+    background: #1b2d95;
+    /* لون داكن احترافي */
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+    background: #0038c7;
+}
+
+#result-area {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+/* تصميم بطاقة المنتج الجديدة */
+.product-result-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.product-result-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-wrapper {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #f8fafc;
+    border: 1px solid #eee;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info-wrapper {
+    flex-grow: 1;
+}
+
+.product-name-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.2s;
+}
+
+.product-name-link:hover {
+    color: #2563eb;
+    /* يتغير اللون عند تمرير الماوس */
+}
+
+.status-badge {
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    background: #eef2ff;
+    color: #4338ca;
+}
+a {
+    color: #1b2d95;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

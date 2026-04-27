@@ -1,0 +1,394 @@
+/* ================================================
+   CSS الأصلي - لم يتغير شيء
+   ================================================ */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.header-mono {
+    border-bottom: 2px solid #eee;
+}
+
+.mono-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef !important;
+}
+
+.custom-show-table th,
+.custom-show-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.mono-field label {
+    font-size: 13px;
+    font-weight: 800;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.mono-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    background: #fdfdfd;
+    font-size: 14px;
+}
+
+.mono-field input:focus {
+    outline: none;
+    border-color: #1b2d95;
+    background: #fff;
+}
+
+.btn-mono-dark {
+    background: #212529;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-mono-dark:hover {
+    background: #0a0067;
+    color: #fff;
+}
+
+.btn-mono-light {
+    background: #fff;
+    color: #212529;
+    border: 1px solid #dee2e6;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-mono-light:hover {
+    background: #1b2d95;
+    color: #fff;
+}
+
+.image-drop-mono {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.avatar-preview {
+    width: 110px;
+    height: 110px;
+    position: relative;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.upload-badge-mono {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: #212529;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================================================
+   تصميم جديد لجدول Existing Components
+   ================================================ */
+
+/* عنوان القسم */
+.ec-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 0 2px;
+}
+
+.ec-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.ec-count {
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 2px 10px;
+    border-radius: 999px;
+}
+
+/* غلاف الجدول */
+.ec-table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    background: #fff;
+    margin-bottom: 0;
+}
+
+/* الجدول */
+.ec-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.ec-table thead tr {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ec-table th {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.ec-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.15s;
+}
+
+.ec-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.ec-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.ec-table td {
+    padding: 12px 16px;
+    vertical-align: middle;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* صورة القطعة */
+.ec-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #e2e8f0;
+}
+
+/* اسم القطعة */
+.ec-part-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+/* حقول التعديل (الكمية والسعر) */
+.ec-input {
+    width: 90px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1b2d95;
+    text-align: center;
+    transition: border 0.2s, box-shadow 0.2s;
+    background: #fafbfc;
+    display: inline-block;
+}
+
+.ec-input:focus {
+    border-color: #1b2d95;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27, 45, 149, 0.1);
+    background: #fff;
+}
+
+/* Badges الحالة */
+.ec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.ec-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.ec-available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.ec-available .ec-dot {
+    background: #22c55e;
+}
+
+.ec-limitede {
+    background: #fed7c7;
+    color: #80380c;
+}
+.ec-limited {
+    background: #fee6c7;
+    color: #92400e;
+}
+.ec-limitede .ec-dot {
+    background: #f59e0b;
+}
+.ec-limited .ec-dot {
+    background: #f59e0b;
+}
+.ec-unavailable {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.ec-unavailable .ec-dot {
+    background: #ef4444;
+}
+
+/* زر الحذف */
+.ec-delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    color: #94a3b8;
+    transition: color 0.2s, background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ec-delete-btn:hover {
+    color: #ef4444;
+    background: #fee2e2;
+}
+
+.ec-trash-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Footer الجدول */
+.ec-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 4px;
+    margin-top: 8px;
+}
+
+.ec-table-count {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* زر Save Changes */
+.ec-save-btn {
+    background: #1b2d95;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(27, 45, 149, 0.25);
+}
+
+.ec-save-btn:hover {
+    background: #0a0067;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(27, 45, 149, 0.35);
+}
+
+/* رسالة الفراغ */
+.ec-empty {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ec-input {
+        width: 70px;
+    }
+}

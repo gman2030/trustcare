@@ -1,0 +1,63 @@
+   /* Square Uploader Style */
+    .upload-square {
+        width: 100px;
+        height: 100px;
+        background: #fbfbfb;
+        border: 2px dashed #ececec;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+        overflow: hidden;
+    }
+    .upload-square:hover {
+        border-color: #00377f;
+        background: #f0f0f0;
+    }
+    #imagePreview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Minimalist Inputs */
+    .modern-input {
+        width: 100%;
+        padding: 15px 20px;
+        background: #f9f9f9;
+        border: 1px solid #eeeeee;
+        border-radius: 12px;
+        font-size: 15px;
+        color: #333;
+        transition: 0.3s;
+    }
+    .modern-input:focus {
+        outline: none;
+        background: #fff;
+        border-color: #000;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    /* Premium Button Style */
+    .btn-premium {
+        width: 100%;
+        background: #004bad;
+        color: #fff;
+        border: none;
+        padding: 18px;
+        border-radius: 15px;
+        font-weight: 600;
+        font-size: 16px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .btn-premium:hover {
+        background: #00377f;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(54, 112, 199, 0.1);
+    }
+    .btn-premium:active {
+        transform: translateY(0);
+    }
