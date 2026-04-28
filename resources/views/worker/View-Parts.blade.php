@@ -8,7 +8,7 @@
     <div class="container">
         <div class="header-info">
             <div class="product-img-box">
-                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->name }}">
+                <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
             </div>
             <div class="product-details">
                 <h1>{{ $product->name }}</h1>
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="part-img-wrapper">
-                            <img src="{{ asset('uploads/parts/' . $part->image) }}" alt="{{ $part->name }}">
+                            <img src="{{ $part->image_url }}" alt="{{ $part->name }}">
                         </div>
 
                         <div class="part-info">

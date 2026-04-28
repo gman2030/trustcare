@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Support\PublicImageUrl;
 
 class SearchController extends Controller
 {
@@ -14,7 +15,8 @@ class SearchController extends Controller
             return response()->json([
                 'id' => $product->id,
                 'name' => $product->name,
-                'image' => $product->image, 
+                'image' => $product->image,
+                'image_url' => PublicImageUrl::fromPath($product->image),
                 'serial_number' => $product->serial_number,
                 'category' => $product->category
             ]);

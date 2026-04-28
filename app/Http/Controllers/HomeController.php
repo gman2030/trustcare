@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Product;
+use App\Support\PublicImageUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -23,7 +24,7 @@ class HomeController extends Controller
             'success' => $product ? true : false,
             'product' => $product ? [
                 'name' => $product->name,
-                'image' => asset('uploads/products/' . $product->image)
+                'image' => PublicImageUrl::fromPath($product->image),
             ] : null
         ]);
     }

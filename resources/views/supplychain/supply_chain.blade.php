@@ -51,7 +51,7 @@
                                     <div class="d-flex align-items-center cursor-pointer group-hover"
                                         onclick="openPartsModal('{{ $product->id }}', '{{ $product->name }}')">
                                         <div class="product-img-box me-3 shadow-sm">
-                                            <img src="{{ $product->image ? asset('uploads/products/' . $product->image) : asset('assets/no-image.png') }}"
+                                            <img src="{{ $product->image_url }}"
                                                 alt="">
                                         </div>
                                         <div class="product-info">

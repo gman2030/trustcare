@@ -54,7 +54,7 @@ function searchParts() {
                 // بناء البطاقة مع الصورة والرابط
                 // ملاحظة: الرابط يفترض وجود مسار تفاصيل المنتج بالـ ID
                 const productUrl = `/worker/product-view/${data.id}`;
-                const imagePath = data.image ? `/uploads/products/${data.image}` : '/assets/no-image.png';
+                const imagePath = data.image_url || '/assets/no-image.png';
 
                 container.innerHTML = `
                     <div class="product-result-card">

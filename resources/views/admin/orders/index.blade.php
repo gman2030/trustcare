@@ -50,7 +50,7 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td style="width: 70px;">
-                                    <img src="{{ asset('uploads/parts/' . ($item->image ?? $item['image'])) }}"
+                                    <img src="{{ \App\Support\PublicImageUrl::fromPath($item->image ?? $item['image'] ?? null) }}"
                                         class="part-img">
                                 </td>
                                 <td>

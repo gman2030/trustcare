@@ -275,7 +275,7 @@
                 @php $items = is_array($order->items) ? $order->items : json_decode($order->items); @endphp
                 @foreach ($items as $item)
                     <div class="part-item">
-                        <img src="{{ asset('uploads/parts/' . ($item->image ?? $item['image'])) }}" class="part-img">
+                        <img src="{{ \App\Support\PublicImageUrl::fromPath($item->image ?? $item['image'] ?? null) }}" class="part-img">
                         <div class="part-info">
                             <div class="part-name">{{ $item->name ?? $item['name'] }}</div>
                             <div class="part-id">ID: {{ $item->id ?? $item['id'] }}</div>

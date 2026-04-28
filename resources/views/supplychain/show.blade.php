@@ -25,7 +25,7 @@
             <div class="product-hero-inner">
                 <!-- Image -->
                 <div class="product-image-box">
-                    <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->name }}">
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
                 </div>
                 <!-- Details -->
                 <div class="product-meta">
@@ -84,7 +84,7 @@
                                 <!-- Image -->
                                 <td>
                                     <div class="row-img"
-                                        style="background-image: url('{{ asset('uploads/parts/' . $part->image) }}')"></div>
+                                        style="background-image: url('{{ $part->image_url }}')"></div>
                                 </td>
                                 <!-- Name -->
                                 <td>

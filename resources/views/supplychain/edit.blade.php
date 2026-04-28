@@ -30,7 +30,7 @@
 
                                     <div class="avatar-upload mb-4">
                                         <div class="avatar-preview mx-auto">
-                                            <img id="main-img" src="{{ asset('uploads/products/' . $product->image) }}">
+                                            <img id="main-img" src="{{ $product->image_url }}">
                                             <label for="main-upload" class="upload-badge-mono">
                                                 <i class="fas fa-camera"></i>
                                                 <input type="file" name="image" id="main-upload" hidden
@@ -164,7 +164,7 @@
                                                             {{-- صورة القطعة --}}
                                                             <td>
                                                                 <div class="ec-img"
-                                                                    style="background-image: url('{{ $part->image ? asset('uploads/parts/' . $part->image) : asset('assets/no-image.png') }}')">
+                                                                    style="background-image: url('{{ $part->image_url }}')">
                                                                 </div>
                                                             </td>
 
